@@ -37,8 +37,8 @@ def gameover(screen: pg.Surface) -> None:
     gameover画面の表示
     背景の黒い長方形、GameOverの文字、こうかとん画像枚を張り出す。
     """
-    bk_img = pg.Surface((WIDTH,HEIGHT))
-    # pg.Rect(bk_img, (0, 0, 0),(1100,650))
+    bk_img = pg.Surface((WIDTH, HEIGHT))
+    pg.draw.rect(bk_img, (0, 0, 0), (0, 0, 1100, 650))
     bk_img.set_alpha(177)  # 半透明化
     bk_rct = bk_img.get_rect()
     bk_rct.center = 550, 325
@@ -54,6 +54,9 @@ def gameover(screen: pg.Surface) -> None:
     screen.blit(kk1_img, kk1_rct)
     pg.display.update()  # 再読み込み
     time.sleep(5)  # 時間ストップ
+
+
+# def init_bb_imgs() -> tuple[list[pg.Surface], list[int]]:    
     
 
 def main():
@@ -75,6 +78,8 @@ def main():
     vx, vy = +5, +5
     clock = pg.time.Clock()
     tmr = 0
+    # bb_accs = [a for a in range(1, 11)]
+
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
