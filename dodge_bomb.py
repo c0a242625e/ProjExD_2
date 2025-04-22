@@ -123,8 +123,8 @@ def main():
         if not tate:  # 上下どちらかにはみ出ていたら
             vy *= -1
 
-        get_kk_img = math.tan(-1*(sum_mv[1])/ sum_mv[0])
-        kk_img = pg.transform.rotozoom(kk_img, get_kk_img, 1.0)
+        # get_kk_img = math.tan(-1*(sum_mv[1])/ sum_mv[0])
+        # kk_img = pg.transform.rotozoom(kk_img, get_kk_img, 1.0)
 
         screen.blit(kk_img, kk_rct)
         screen.blit(bb_img, bb_rct)
