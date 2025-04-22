@@ -1,6 +1,7 @@
 import os
 import random
 import sys
+import time
 import pygame as pg
 
 
@@ -30,9 +31,29 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
-
+def gameover(screen: pg.Surface) -> None:
+    bk_img = pg.Surface((1100,650))
+    pg.Rect(0, 0, 1100, 650)  #四角形読み込み
+    bk_img.set_alpha(177)  # 半透明化
+    bk_rct = bk_img.get_rect()
+    bk_rct.center = 550, 325
+    screen.blit(bk_img, bk_rct) # 背景張り出し
+    fonto = pg.font.Font(None, 80)  # 文字読み込み
+    txt = fonto.render("Gameover", True, (255, 255, 255))
+    screen.blit(txt, [400, 300])  # 文字張り出し
+    kk1_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 1.5)  # こうかとん読み込み
+    kk1_rct = kk1_img.get_rect() #
+    kk1_rct.center = 300, 325
+    screen.blit(kk1_img, kk1_rct)
+    kk1_rct.center = 800, 325
+    screen.blit(kk1_img, kk1_rct)
+    pg.display.update()
+    time.sleep(5)
+    
 
 def main():
+
+
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     # こうかとん初期化
@@ -54,6 +75,11 @@ def main():
             if event.type == pg.QUIT: 
                 return
         screen.blit(bg_img, [0, 0]) 
+
+        # こうかとんRectと爆弾Rectが重なっていたら
+        if kk_rct.colliderect(bb_rct):
+            gameover(screen)
+            return
 
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
@@ -83,6 +109,8 @@ def main():
         pg.display.update()
         tmr += 1
         clock.tick(50)
+
+
 
 
 if __name__ == "__main__":
