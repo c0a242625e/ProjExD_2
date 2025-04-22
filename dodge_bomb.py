@@ -32,8 +32,13 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
 
 
 def gameover(screen: pg.Surface) -> None:
-    bk_img = pg.Surface((1100,650))
-    pg.Rect(0, 0, 1100, 650)  #四角形読み込み
+    """
+    引数：screen
+    gameover画面の表示
+    背景の黒い長方形、GameOverの文字、こうかとん画像枚を張り出す。
+    """
+    bk_img = pg.Surface((WIDTH,HEIGHT))
+    # pg.Rect(bk_img, (0, 0, 0),(1100,650))
     bk_img.set_alpha(177)  # 半透明化
     bk_rct = bk_img.get_rect()
     bk_rct.center = 550, 325
@@ -42,13 +47,13 @@ def gameover(screen: pg.Surface) -> None:
     txt = fonto.render("Gameover", True, (255, 255, 255))
     screen.blit(txt, [400, 300])  # 文字張り出し
     kk1_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 1.5)  # こうかとん読み込み
-    kk1_rct = kk1_img.get_rect() #
-    kk1_rct.center = 300, 325
+    kk1_rct = kk1_img.get_rect() # Rect読み込み
+    kk1_rct.center = 300, 325  # １枚目座標
     screen.blit(kk1_img, kk1_rct)
-    kk1_rct.center = 800, 325
+    kk1_rct.center = 800, 325  # ２枚目座標
     screen.blit(kk1_img, kk1_rct)
-    pg.display.update()
-    time.sleep(5)
+    pg.display.update()  # 再読み込み
+    time.sleep(5)  # 時間ストップ
     
 
 def main():
