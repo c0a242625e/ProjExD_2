@@ -50,7 +50,7 @@ def gameover(screen: pg.Surface) -> None:
     screen.blit(bk_img, bk_rct) # 背景張り出し
 
     fonto = pg.font.Font(None, 80)  # 文字読み込み
-    txt = fonto.render("Gameover", True, (255, 255, 255))
+    txt = fonto.render("Game Over", True, (255, 255, 255))
     screen.blit(txt, [400, 300])  # 文字張り出し
 
     kk1_img = pg.transform.rotozoom(pg.image.load("fig/8.png"), 0, 1.5)  # こうかとん読み込み
