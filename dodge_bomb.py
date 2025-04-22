@@ -43,7 +43,7 @@ def gameover(screen: pg.Surface) -> None:
     """
 
     bk_img = pg.Surface((WIDTH, HEIGHT))
-    pg.draw.rect(bk_img, (0, 0, 0), (0, 0, 1100, 650))
+    pg.draw.rect(bk_img, (0, 0, 0), (0, 0, 1100, 650))  # ブラックアウト
     bk_img.set_alpha(177)  # 半透明化
     bk_rct = bk_img.get_rect()
     bk_rct.center = 550, 325
